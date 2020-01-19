@@ -1,0 +1,19 @@
+version: '3.7'
+
+services:
+  db:
+    image: postgres:10-alpine
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./db_data:/var/lib/postgresql/data
+    restart: always
+    environment:
+     POSTGRES_PASSWORD: password
+     POSTGRES_USER: user
+     POSTGRES_DB: api
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 8080:8080
