@@ -9,7 +9,10 @@ a simple api for simple requests
   ```
 
 2. run the migrations
-   `todo`
+   ```sh
+    $> cd ./migrations
+    $> flyway migrate
+   ```
 
 3. start a compilation errors loop
   ```sh
@@ -22,13 +25,12 @@ a simple api for simple requests
     $> stack exec Api-exe
   ```
 ## Log-in into `adminer`
-  Server: `db` *-- this is actually the name of the postgres service in `docker-copose.yml`*
-  Username: `user`
-  Password: `password`
-  Database: `api`
+  - Server: `db` *-- this is actually the name of the postgres service in `docker-copose.yml`*
+  - Username: `user`
+  - Password: `password`
+  - Database: `api`
 
 ## Run the tests
-to run the tests simply execute the command:
 ```sh
   $> stack test
 ```
