@@ -1,1 +1,1 @@
-INSERT INTO users (name, email, password) values ('nome', 'nome@nome.it', 'password')
+INSERT INTO users (email, password) values ('nome@nome.it', 'password')
