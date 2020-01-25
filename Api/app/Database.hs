@@ -2,7 +2,6 @@ module Database where
 
 import Data.ByteString (ByteString)
 import Data.Aeson ()
-import Control.Exception (bracket)
 import Data.Pool
 import Database.PostgreSQL.Simple
 import LoadEnv
@@ -10,12 +9,6 @@ import System.Environment (getEnv)
 import Data.ByteString.UTF8 as BSU
 
 type DBConnectionString = ByteString
-
-initDB :: DBConnectionString -> IO ()
-initDB connstr = bracket (connectPostgreSQL connstr) close $ \conn -> do
-  execute_ conn
-    "CREATE TABLE IF NOT EXISTS messages (msg text not null)"
-  return ()
 
 initConnectionPool :: DBConnectionString -> IO (Pool Connection)
 initConnectionPool connStr =

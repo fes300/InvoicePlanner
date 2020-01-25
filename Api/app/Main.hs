@@ -14,5 +14,4 @@ main :: IO ()
 main = do
   connection <- getDBConnectionString
   pool  <- initConnectionPool connection
-  initDB connection
   runApp pool
