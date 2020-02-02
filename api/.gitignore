@@ -1,0 +1,6 @@
+.stack-work/
+.vscode/
+Api.cabal
+*~
+db_data
+dist/

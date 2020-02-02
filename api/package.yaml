@@ -1,0 +1,78 @@
+name: Api
+version: 0.1.0.0
+github: "githubuser/Api"
+license: BSD3
+author: "fes300"
+maintainer: "federicosordillo@gmail.com"
+copyright: "2020 fes300"
+
+extra-source-files:
+  - README.md
+  - ChangeLog.md
+
+# Metadata used when publishing your package
+# synopsis:            Short description of your package
+# category:            Web
+
+# To avoid duplicated efforts in documentation and dealing with the
+# complications of embedding Haddock markup inside cabal files, it is
+# common to point users to the README.md file.
+description: Please see the README on GitHub at <https://github.com/fes300/invoicePlanner#readme>
+
+_packages: &packages
+  - base >= 4.7 && < 5
+  - bytestring
+  - aeson
+  - resource-pool
+  - postgresql-simple
+  - load-env
+  - text
+  - utf8-string
+  - uuid
+  - time
+  - servant
+  - servant-server
+  - warp
+  - servant-elm >= 0.7
+  - elm-bridge
+
+_options: &options
+  - -threaded
+  - -rtsopts
+  - -with-rtsopts=-N
+
+dependencies: *packages
+
+default-extensions:
+  - OverloadedStrings
+  - TypeFamilies
+  - KindSignatures
+  - GADTs
+  - TypeOperators
+  - DataKinds
+  - DeriveGeneric
+  - DeriveAnyClass
+  - TemplateHaskell
+
+library:
+  source-dirs: src
+
+executables:
+  api:
+    main: Main.hs
+    source-dirs: app
+    ghc-options: *options
+  generate-api:
+    main: GenerateApi.hs
+    source-dirs:
+      - generateApi
+      - app
+    ghc-options: *options
+
+tests:
+  Api-test:
+    main: Spec.hs
+    source-dirs:
+      - test
+      - app
+    ghc-options: *options
